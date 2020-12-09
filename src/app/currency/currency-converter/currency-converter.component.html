@@ -1,0 +1,36 @@
+<div class="custom-header">
+  <form class="example-form converter-body">
+    <mat-form-field appearance="fill">
+      <mat-label>Select First Currency</mat-label>
+      <mat-select [(value)]="firstCurrencySymbol"
+        (selectionChange)="getCurrencyValues(firstCurrencySymbol, 'firstCurrency')">
+        <mat-option *ngFor="let currency of filteredCurrencies" [value]="currency">
+          {{currency ? currency : ''}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <mat-form-field appearance="fill">
+      <mat-label>Select Second Currency</mat-label>
+      <mat-select [(value)]="secondCurrencySymbol"
+        (selectionChange)="getCurrencyValues(secondCurrencySymbol, 'secondCurrency')">
+        <mat-option *ngFor="let currency of filteredCurrencies" [value]="currency">
+          {{currency ? currency : ''}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br />
+    <br />
+    <mat-form-field class="example-full-width">
+      <input type="number" matInput name="firstCurrencyValue" placeholder="First Currency"
+         [(ngModel)]="firstCurrencyValue" (ngModelChange)="updateCurrencyValue('firstCurrency')">
+    </mat-form-field>
+
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <mat-form-field class="example-full-width">
+      <input type="number" matInput name="secondCurrencyValue" placeholder="Second Currency"
+         [(ngModel)]="secondCurrencyValue" (ngModelChange)="updateCurrencyValue('secondCurrency')">
+    </mat-form-field>
+  </form>
+</div>
+<button mat-button color="primary" (click)="navigate('/')">Back To Home</button>
